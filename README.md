@@ -4,3 +4,6 @@ Computing Machinery:
 
 Assignments for CPSC 355:
   Each assignment complete with the assignment file.
+  
+  GRADES:
+    Assignment 1: 34/34
