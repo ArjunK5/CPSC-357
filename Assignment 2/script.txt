@@ -1,0 +1,179 @@
+Script started on 2020-02-13 22:38:20-07:00
+]0;sahil.brar@csa3:~/CPSC355Tsahil.brar@csa3:~/CPSC355T$ gdb assign2a
+GNU gdb (GDB) Fedora 8.1.1-4.fc28
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "aarch64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from assign2a...(no debugging symbols found)...done.
+(gdb) b main
+Breakpoint 1 at 0x4005d0
+(gdb) assig[K[K[K[K[Kdisplay/i $pc
+1: x/i $pc
+<error: No registers.>
+(gdb) r
+Starting program: /home/uga/sahil.brar/CPSC355T/assign2a 
+warning: the debug information found in "/usr/lib/debug//usr/lib64/ld-2.27.so.debug" does not match "/lib/ld-linux-aarch64.so.1" (CRC mismatch).
+
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.27-38.fc28.aarch64
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+
+Breakpoint 1, 0x00000000004005d0 in main ()
+1: x/i $pc
+=> 0x4005d0 <main+8>:	mov	w19, #0x7fc07fc             	// #133957628
+(gdb) ni
+0x00000000004005d4 in step1 ()
+1: x/i $pc
+=> 0x4005d4 <step1>:	and	w21, w19, #0x55555555
+(gdb) p/x $w19
+$1 = 0x7fc07fc
+(gdb) p/x $w19[1P $w19t $w19
+$2 = 111111111000000011111111100
+(gdb) ni
+0x00000000004005d8 in step1 ()
+1: x/i $pc
+=> 0x4005d8 <step1+4>:	lsl	w21, w21, #1
+(gdb) ni
+0x00000000004005dc in step1 ()
+1: x/i $pc
+=> 0x4005dc <step1+8>:	lsr	w22, w19, #1
+(gdb) ni
+0x00000000004005e0 in step1 ()
+1: x/i $pc
+=> 0x4005e0 <step1+12>:	and	w22, w22, #0x55555555
+(gdb) ni
+0x00000000004005e4 in step1 ()
+1: x/i $pc
+=> 0x4005e4 <step1+16>:	orr	w20, w21, w22
+(gdb) ni
+0x00000000004005e8 in step2 ()
+1: x/i $pc
+=> 0x4005e8 <step2>:	and	w21, w20, #0x33333333
+(gdb) p/x w20[K[K[K$w20
+$3 = 0xbfc0bfc
+(gdb) p/x $w20[1P $w20t $w20
+$4 = 1011111111000000101111111100
+(gdb) ni
+0x00000000004005ec in step2 ()
+1: x/i $pc
+=> 0x4005ec <step2+4>:	lsl	w21, w21, #2
+(gdb) ni
+0x00000000004005f0 in step2 ()
+1: x/i $pc
+=> 0x4005f0 <step2+8>:	lsr	w22, w20, #2
+(gdb) ni
+0x00000000004005f4 in step2 ()
+1: x/i $pc
+=> 0x4005f4 <step2+12>:	and	w22, w22, #0x33333333
+(gdb) ni
+0x00000000004005f8 in step2 ()
+1: x/i $pc
+=> 0x4005f8 <step2+16>:	orr	w20, w21, w22
+(gdb) ni
+0x00000000004005fc in step3 ()
+1: x/i $pc
+=> 0x4005fc <step3>:	and	w21, w20, #0xf0f0f0f
+(gdb) nip/t $w20x[C[C[C[C[C
+$5 = 0xef30ef3
+(gdb) p/x $w20[1P $w20t $w20
+$6 = 1110111100110000111011110011
+(gdb) p/t $w20x[C[C[C[C[C[C[C[C[C[C[Cni[K
+0x0000000000400600 in step3 ()
+1: x/i $pc
+=> 0x400600 <step3+4>:	lsl	w21, w21, #4
+(gdb) ni
+0x0000000000400604 in step3 ()
+1: x/i $pc
+=> 0x400604 <step3+8>:	lsr	w22, w20, #4
+(gdb) ni
+0x0000000000400608 in step3 ()
+1: x/i $pc
+=> 0x400608 <step3+12>:	and	w22, w22, #0xf0f0f0f
+(gdb) ni
+0x000000000040060c in step3 ()
+1: x/i $pc
+=> 0x40060c <step3+16>:	orr	w20, w21, w22
+(gdb) ni
+0x0000000000400610 in step4 ()
+1: x/i $pc
+=> 0x400610 <step4>:	lsl	w21, w20, #24
+(gdb) p/x $w20
+$7 = 0xe03fe03f
+(gdb) p/t $w20
+$8 = 11100000001111111110000000111111
+(gdb) ni
+0x0000000000400614 in step4 ()
+1: x/i $pc
+=> 0x400614 <step4+4>:	and	w22, w20, #0xff00
+(gdb) ni
+0x0000000000400618 in step4 ()
+1: x/i $pc
+=> 0x400618 <step4+8>:	lsl	w22, w22, #8
+(gdb) ni
+0x000000000040061c in step4 ()
+1: x/i $pc
+=> 0x40061c <step4+12>:	lsr	w23, w20, #8
+(gdb) ni
+0x0000000000400620 in step4 ()
+1: x/i $pc
+=> 0x400620 <step4+16>:	and	w23, w23, #0xff00
+(gdb) ni
+0x0000000000400624 in step4 ()
+1: x/i $pc
+=> 0x400624 <step4+20>:	lsr	w24, w20, #24
+(gdb) ni
+0x0000000000400628 in step4 ()
+1: x/i $pc
+=> 0x400628 <step4+24>:	orr	w20, w21, w22
+(gdb) ni
+0x000000000040062c in step4 ()
+1: x/i $pc
+=> 0x40062c <step4+28>:	orr	w20, w20, w23
+(gdb) ni
+0x0000000000400630 in step4 ()
+1: x/i $pc
+=> 0x400630 <step4+32>:	orr	w20, w20, w24
+(gdb) ni
+0x0000000000400634 in print ()
+1: x/i $pc
+=> 0x400634 <print>:	adrp	x0, 0x400000
+(gdb) p/x $w20
+$9 = 0x3fe03fe0
+(gdb) p/t $w20
+$10 = 111111111000000011111111100000
+(gdb) no[Ki
+0x0000000000400638 in print ()
+1: x/i $pc
+=> 0x400638 <print+4>:	add	x0, x0, #0x594
+(gdb) ni
+0x000000000040063c in print ()
+1: x/i $pc
+=> 0x40063c <print+8>:	mov	w1, w19
+(gdb) ni
+0x0000000000400640 in print ()
+1: x/i $pc
+=> 0x400640 <print+12>:	mov	w2, w20
+(gdb) ni
+0x0000000000400644 in print ()
+1: x/i $pc
+=> 0x400644 <print+16>:	bl	0x400480 <printf@plt>
+(gdb) ni
+Values: Original = 0x07FC07FC     Reversed = 0x3FE03FE0
+[Inferior 1 (process 24256) exited normally]
+(gdb) ni[K[Kq
+]0;sahil.brar@csa3:~/CPSC355Tsahil.brar@csa3:~/CPSC355T$ exit
+exit
+
+Script done on 2020-02-13 22:42:16-07:00
