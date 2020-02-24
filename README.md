@@ -8,4 +8,5 @@ Assignments for CPSC 355:
   
   
 GRADES:
-Assignment 1: 34/34
+Assignment 1: 100/100
+Assignment 2:  99/100
