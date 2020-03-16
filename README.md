@@ -6,7 +6,7 @@
 #### Assignments for CPSC 355:
     Each assignment complete with the assignment file.
   
-**GRADES:**
-Assignment 1: 100/100
+    **GRADES:**
+    Assignment 1: 100/100
 
-Assignment 2:  99/100
+    Assignment 2:  99/100
