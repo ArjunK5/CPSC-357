@@ -1,0 +1,341 @@
+Script started on 2020-03-19 22:55:43-06:00
+]0;sahil.brar@csa3:~/CPSC355T/A4sahil.brar@csa3:~/CPSC355T/A4$ gdb assign4
+GNU gdb (GDB) Fedora 8.1.1-4.fc28
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "aarch64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from assign4...(no debugging symbols found)...done.
+(gdb) mai[K[K[Kb main
+Breakpoint 1 at 0x400658
+(gdb) display/i %pc
+A syntax error in expression, near `%pc'.
+(gdb) display/i %pc[K[K[K$pc
+1: x/i $pc
+<error: No registers.>
+(gdb) r
+Starting program: /home/uga/sahil.brar/CPSC355T/A4/assign4 
+warning: the debug information found in "/usr/lib/debug//usr/lib64/ld-2.27.so.debug" does not match "/lib/ld-linux-aarch64.so.1" (CRC mismatch).
+
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.27-38.fc28.aarch64
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+
+Breakpoint 1, 0x0000000000400658 in main ()
+1: x/i $pc
+=> 0x400658 <main+28>:	bl	0x400724 <newPyramid>
+(gdb) ni
+0x000000000040065c in main ()
+1: x/i $pc
+=> 0x40065c <main+32>:	add	x21, x29, #0x28
+(gdb) ni
+0x0000000000400660 in main ()
+1: x/i $pc
+=> 0x400660 <main+36>:	mov	x8, x21
+(gdb) ni
+0x0000000000400664 in main ()
+1: x/i $pc
+=> 0x400664 <main+40>:	mov	w1, #0xf                   	// #15
+(gdb) ni
+0x0000000000400668 in main ()
+1: x/i $pc
+=> 0x400668 <main+44>:	mov	w2, #0xf                   	// #15
+(gdb) ni
+0x000000000040066c in main ()
+1: x/i $pc
+=> 0x40066c <main+48>:	mov	w3, #0x12                  	// #18
+(gdb) ni
+0x0000000000400670 in main ()
+1: x/i $pc
+=> 0x400670 <main+52>:	bl	0x400724 <newPyramid>
+(gdb) ni
+0x0000000000400674 in main ()
+1: x/i $pc
+=> 0x400674 <main+56>:	adrp	x0, 0x400000
+(gdb) x/100ud $x20
+0xfffffffff160:	0	0	10	10
+0xfffffffff170:	9	300	0	0
+0xfffffffff180:	15	15	18	1350
+0xfffffffff190:	4196448	0	0	0
+0xfffffffff1a0:	0	0	4195548	0
+0xfffffffff1b0:	0	0	0	0
+0xfffffffff1c0:	4195472	0	0	0
+0xfffffffff1d0:	0	0	0	0
+0xfffffffff1e0:	4195472	0	-3352	65535
+0xfffffffff1f0:	-3504	1	4195900	0
+0xfffffffff200:	-1	-1	4196448	0
+0xfffffffff210:	0	0	4195472	0
+0xfffffffff220:	0	0	0	0
+0xfffffffff230:	0	0	0	0
+0xfffffffff240:	0	0	0	0
+0xfffffffff250:	0	0	-3680	65535
+0xfffffffff260:	-1399633543	-1840838281	794047797	1630483521
+0xfffffffff270:	-331808335	-1840838281	0	0
+0xfffffffff280:	0	0	0	0
+0xfffffffff290:	0	0	0	0
+0xfffffffff2a0:	0	0	0	0
+0xfffffffff2b0:	0	0	0	0
+0xfffffffff2c0:	0	0	0	0
+0xfffffffff2d0:	4325376	0	4195548	0
+0xfffffffff2e0:	1	0	-2738	65535
+(gdb) x/100ud $x20[K1
+0xfffffffff178:	0	0	15	15
+0xfffffffff188:	18	1350	4196448	0
+0xfffffffff198:	0	0	0	0
+0xfffffffff1a8:	4195548	0	0	0
+0xfffffffff1b8:	0	0	4195472	0
+0xfffffffff1c8:	0	0	0	0
+0xfffffffff1d8:	0	0	4195472	0
+0xfffffffff1e8:	-3352	65535	-3504	1
+0xfffffffff1f8:	4195900	0	-1	-1
+0xfffffffff208:	4196448	0	0	0
+0xfffffffff218:	4195472	0	0	0
+0xfffffffff228:	0	0	0	0
+0xfffffffff238:	0	0	0	0
+0xfffffffff248:	0	0	0	0
+0xfffffffff258:	-3680	65535	-1399633543	-1840838281
+0xfffffffff268:	794047797	1630483521	-331808335	-1840838281
+0xfffffffff278:	0	0	0	0
+0xfffffffff288:	0	0	0	0
+0xfffffffff298:	0	0	0	0
+0xfffffffff2a8:	0	0	0	0
+0xfffffffff2b8:	0	0	0	0
+0xfffffffff2c8:	0	0	4325376	0
+0xfffffffff2d8:	4195548	0	1	0
+0xfffffffff2e8:	-2738	65535	0	0
+0xfffffffff2f8:	-2697	65535	-896	65535
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) c
+Continuing.
+
+Initial pyramid values: 
+Pyramid Khafre
+	Center = (0, 0)
+	Base width = 10   Base length = 10
+	Height = 9
+	Volume = 300
+
+Pyramid Cheops
+	Center = (0, 0)
+	Base width = 15   Base length = 15
+	Height = 18
+	Volume = 1350
+
+
+New pyramid values: 
+Pyramid Khafre
+	Center = (-23, 17)
+	Base width = 10   Base length = 10
+	Height = 9
+	Volume = 300
+
+Pyramid Cheops
+	Center = (27, -10)
+	Base width = 135   Base length = 135
+	Height = 162
+	Volume = 984150
+
+[Inferior 1 (process 5029) exited normally]
+(gdb) ni
+The program is not being run.
+(gdb) ni
+The program is not being run.
+(gdb) r
+Starting program: /home/uga/sahil.brar/CPSC355T/A4/assign4 
+warning: the debug information found in "/usr/lib/debug//usr/lib64/ld-2.27.so.debug" does not match "/lib/ld-linux-aarch64.so.1" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+
+Breakpoint 1, 0x0000000000400658 in main ()
+1: x/i $pc
+=> 0x400658 <main+28>:	bl	0x400724 <newPyramid>
+(gdb) ni
+0x000000000040065c in main ()
+1: x/i $pc
+=> 0x40065c <main+32>:	add	x21, x29, #0x28
+(gdb) ni
+0x0000000000400660 in main ()
+1: x/i $pc
+=> 0x400660 <main+36>:	mov	x8, x21
+(gdb) ni
+0x0000000000400664 in main ()
+1: x/i $pc
+=> 0x400664 <main+40>:	mov	w1, #0xf                   	// #15
+(gdb) ni
+0x0000000000400668 in main ()
+1: x/i $pc
+=> 0x400668 <main+44>:	mov	w2, #0xf                   	// #15
+(gdb) ni
+0x000000000040066c in main ()
+1: x/i $pc
+=> 0x40066c <main+48>:	mov	w3, #0x12                  	// #18
+(gdb) ni
+0x0000000000400670 in main ()
+1: x/i $pc
+=> 0x400670 <main+52>:	bl	0x400724 <newPyramid>
+(gdb) ni
+0x0000000000400674 in main ()
+1: x/i $pc
+=> 0x400674 <main+56>:	adrp	x0, 0x400000
+(gdb) ni
+0x0000000000400678 in main ()
+1: x/i $pc
+=> 0x400678 <main+60>:	add	x0, x0, #0x5e7
+(gdb) ni
+0x000000000040067c in main ()
+1: x/i $pc
+=> 0x40067c <main+64>:	bl	0x400480 <printf@plt>
+(gdb) ni
+
+Initial pyramid values: 
+0x0000000000400680 in main ()
+1: x/i $pc
+=> 0x400680 <main+68>:	adrp	x0, 0x400000
+(gdb) ni
+0x0000000000400684 in main ()
+1: x/i $pc
+=> 0x400684 <main+72>:	add	x0, x0, #0x619
+(gdb) ni
+0x0000000000400688 in main ()
+1: x/i $pc
+=> 0x400688 <main+76>:	bl	0x400480 <printf@plt>
+(gdb) ni
+Pyramid Khafre
+0x000000000040068c in main ()
+1: x/i $pc
+=> 0x40068c <main+80>:	mov	x8, x20
+(gdb) ni
+0x0000000000400690 in main ()
+1: x/i $pc
+=> 0x400690 <main+84>:	bl	0x400764 <printPyramid>
+(gdb) ni
+	Center = (0, 0)
+	Base width = 10   Base length = 10
+	Height = 9
+	Volume = 300
+
+0x0000000000400694 in main ()
+1: x/i $pc
+=> 0x400694 <main+88>:	adrp	x0, 0x400000
+(gdb) ni
+0x0000000000400698 in main ()
+1: x/i $pc
+=> 0x400698 <main+92>:	add	x0, x0, #0x629
+(gdb) ni
+0x000000000040069c in main ()
+1: x/i $pc
+=> 0x40069c <main+96>:	bl	0x400480 <printf@plt>
+(gdb) ni
+Pyramid Cheops
+0x00000000004006a0 in main ()
+1: x/i $pc
+=> 0x4006a0 <main+100>:	mov	x8, x21
+(gdb) ni
+0x00000000004006a4 in main ()
+1: x/i $pc
+=> 0x4006a4 <main+104>:	bl	0x400764 <printPyramid>
+(gdb) ni
+	Center = (0, 0)
+	Base width = 15   Base length = 15
+	Height = 18
+	Volume = 1350
+
+0x00000000004006a8 in main ()
+1: x/i $pc
+=> 0x4006a8 <main+108>:	bl	0x40079c <equalSize>
+(gdb) ni
+0x00000000004006ac in main ()
+1: x/i $pc
+=> 0x4006ac <main+112>:	ldr	w19, [x29, #16]
+(gdb) ni
+0x00000000004006b0 in main ()
+1: x/i $pc
+=> 0x4006b0 <main+116>:	cmp	w19, #0x1
+(gdb) ni
+0x00000000004006b4 in main ()
+1: x/i $pc
+=> 0x4006b4 <main+120>:	b.eq	0x4006e4 <false>  // b.none
+(gdb) ni
+0x00000000004006b8 in main ()
+1: x/i $pc
+=> 0x4006b8 <main+124>:	mov	x8, x21
+(gdb) ni
+0x00000000004006bc in main ()
+1: x/i $pc
+=> 0x4006bc <main+128>:	mov	w1, #0x9                   	// #9
+(gdb) ni
+0x00000000004006c0 in main ()
+1: x/i $pc
+=> 0x4006c0 <main+132>:	bl	0x4007e8 <expand>
+(gdb) ni
+0x00000000004006c4 in main ()
+1: x/i $pc
+=> 0x4006c4 <main+136>:	mov	x8, x21
+(gdb) ni
+0x00000000004006c8 in main ()
+1: x/i $pc
+=> 0x4006c8 <main+140>:	mov	w1, #0x1b                  	// #27
+(gdb) ni
+0x00000000004006cc in main ()
+1: x/i $pc
+=> 0x4006cc <main+144>:	mov	w2, #0xfffffff6            	// #-10
+(gdb) ni
+0x00000000004006d0 in main ()
+1: x/i $pc
+=> 0x4006d0 <main+148>:	bl	0x400834 <relocate>
+(gdb) ni
+0x00000000004006d4 in main ()
+1: x/i $pc
+=> 0x4006d4 <main+152>:	mov	x8, x20
+(gdb) ni
+0x00000000004006d8 in main ()
+1: x/i $pc
+=> 0x4006d8 <main+156>:	mov	w1, #0xffffffe9            	// #-23
+(gdb) ni
+0x00000000004006dc in main ()
+1: x/i $pc
+=> 0x4006dc <main+160>:	mov	w2, #0x11                  	// #17
+(gdb) ni
+0x00000000004006e0 in main ()
+1: x/i $pc
+=> 0x4006e0 <main+164>:	bl	0x400834 <relocate>
+(gdb) ni
+
+New pyramid values: 
+Pyramid Khafre
+	Center = (-23, 17)
+	Base width = 10   Base length = 10
+	Height = 9
+	Volume = 300
+
+Pyramid Cheops
+	Center = (27, -10)
+	Base width = 135   Base length = 135
+	Height = 162
+	Volume = 984150
+
+[Inferior 1 (process 5361) exited normally]
+(gdb) ni
+The program is not being run.
+(gdb) q
+]0;sahil.brar@csa3:~/CPSC355T/A4sahil.brar@csa3:~/CPSC355T/A4$ en[Kxit
+exit
+
+Script done on 2020-03-19 22:58:57-06:00
