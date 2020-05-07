@@ -1,0 +1,87 @@
+//  ***  Sahil Brar (UCID: 30021440)  ***
+// CPSC 355 (L01) FINAL: Question 1
+
+//---data---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    .data
+                    .balign 8                                                           // Align by 8 bits
+temp_m:             .double 0r0.0                                                       // Initialize temp variable
+divnum_m:           .double 0r100.0                                                     // Dividing by 100 value
+
+//---text----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    .text
+                    .balign 4
+pn:                 .string "output.bin"
+
+//---Constants, Variables and defining of registers---------------------------------------------------------------------------------------------------------------------------------------------------------
+                    LOWER_LIMIT = -95
+                    UPPER_LIMIT = +95
+                    INCREMENT = 5
+                    SIZE_OF_DOUBLE = 8
+                    AT_FDCWD = -100
+                        
+                    alloc = -(16 + SIZE_OF_DOUBLE) & -16                                      
+                    dealloc = -alloc      
+
+                    buf_s = 16                                              
+
+                    fp .req x29                                                     
+                    lr .req x30                                                     
+
+                    define(fd_r, w19)                                                  
+                    define(value_r, w20)                                               
+                    define(n_r, x21)
+//---main()----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    .global main
+                    .balign 4                       
+main:               stp fp, lr, [sp, alloc]!                                            // Allocate memory for main()
+                    mov fp, sp
+
+                    mov x0, AT_FDCWD
+                    adrp x1, pn
+                    add x1, x1, :lo12:pn
+                    mov w2, 0101
+                    mov w3, 0700
+                    mov x8, 56
+                    svc 0
+
+                    mov fd_r, w0
+                    cmp fd_r, 0
+                    b.ge openok
+                    b end
+
+openok:             // For loop
+                    mov value_r, LOWER_LIMIT                                        
+                    b test                                                              
+
+loop:               adrp x10, temp_m                                                    
+                    add x10, x10, :lo12:temp_m
+                    ldr d0, [x10]                                       
+
+                    scvtf d1, value_r                                                   
+                    
+                    adrp x10, divnum_m                                    
+                    add x10, x10, :lo12:divnum_m
+                    ldr d2, [x10]                                                  
+
+                    fdiv d0, d1, d2                                                     // temp = value/100
+                    str d0, [fp, buf_s]
+
+                    mov w0, fd_r
+                    add x1, fp, buf_s
+                    mov x2, SIZE_OF_DOUBLE
+                    mov x8, 64
+                    svc 0
+
+                    mov n_r, x0
+
+                    add value_r, value_r, INCREMENT                                    
+
+test:               cmp value_r, UPPER_LIMIT                                            // Compare value and UPPER_LIMIT
+                    b.le loop                                                           // If value <= UPPERLIMIT branch to loop
+
+end:                mov w0, fd_r                                              
+                    mov x8, 57                                                         
+                    svc 0                                                             
+
+                    ldp fp, lr, [sp], dealloc                                           // Deallocate memory for main
+                    ret

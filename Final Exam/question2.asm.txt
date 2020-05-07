@@ -1,0 +1,101 @@
+//  ***  Sahil Brar (UCID: 30021440)  ***
+// CPSC 355 (L01) FINAL: Question 2
+
+//---data---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    .data
+                    .balign 8                                                           // Align by 8 bits
+value_m:            .double 0r0.0       
+
+//---text----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    .text
+                    .balign 4
+
+                    fp .req x29                                                     
+                    lr .req x30
+
+                    myset_size = 24
+
+                    a_s = 0
+                    b_s = 4
+                    c_s = 12
+                    d_s = 16
+
+                    myset_s = 16
+
+                    define(myset_base_r, x28)
+
+                    alloc = -(16 + myset_size + 8) & -16
+                    dealloc = -alloc
+
+                    .balign 4
+                    .global main
+main:               stp fp, lr, [sp, alloc]!
+                    mov fp, sp 
+
+                    add myset_base_r, fp, myset_s
+                    
+                    //myset.a
+                    mov w0, 4
+                    mov w1, 5
+                    bl calc
+                    mov w19, w0
+                    str w19, [myset_base_r, a_s]
+
+                    // myset.b
+                    mov x19, 10
+                    str x19, [myset_base_r, b_s]
+
+                    // myset.c
+                    fmov s0, 1.5
+                    fmov s1, 0.75
+                    bl func
+                    str s0, [myset_base_r, c_s]
+                    fcvt d2, s0
+                    
+                    // myset.d
+                    fmov d0, 0.5
+                    str d0, [myset_base_r, d_s]
+
+                    // value
+                    adrp x10, value_m
+                    add x10, x10, :lo12:value_m
+                    ldr d3, [x10]
+                    fadd d3, d0, d2
+                    str d3, [x10]
+
+end:                ldp fp, lr, [sp], dealloc
+                    ret
+
+//---calc--------------------------------------------------
+                    .balign 4
+                    .global calc
+                    calc_alloc = -(16 + 8) & -16
+                    calc_dealloc = -calc_alloc
+calc:               stp fp, lr, [sp, calc_alloc]!
+                    mov fp, sp
+
+                    mov w19, w0
+                    mov w20, w1
+                    mov w21, 2
+                    mov w22, 3
+
+                    mul w19, w19, w19
+                    mul w19, w19, w21
+
+                    mul w20, w20, w22
+
+                    add w19, w19, w20
+
+                    mov w0, w19
+
+                    ldp fp, lr, [sp], calc_dealloc
+                    ret
+
+//---func-------------------------------------------------------
+func:               stp fp, lr, [sp, -16]!
+                    mov fp, sp
+
+                    fdiv s0, s0, s1
+
+                    ldp fp, lr, [sp], 16
+                    ret
